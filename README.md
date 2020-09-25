@@ -75,3 +75,8 @@ git clone https://github.com/mbadolato/iTerm2-Color-Schemes.git
 brew cask install r
 brew cask install rstudio
 ```
+
+* Install Firefox
+```
+brew cask install firefox
+```
