@@ -18,6 +18,12 @@ xcode-select --install
 brew cask install miniconda
 ```
 
+* Add channels for conda
+```
+conda config --add channels bioconda
+conda config --add channels conda-forge
+```
+
 * Install Visual Studio Code (https://code.visualstudio.com/Download)
 ```
 brew cask install visual-studio-code
