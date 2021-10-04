@@ -24,6 +24,11 @@ conda config --add channels bioconda
 conda config --add channels conda-forge
 ```
 
+* Update conda
+```
+conda update -n base conda
+```
+
 * Install Visual Studio Code (https://code.visualstudio.com/Download)
 ```
 brew cask install visual-studio-code
@@ -80,6 +85,11 @@ git clone https://github.com/mbadolato/iTerm2-Color-Schemes.git
 ```
 brew cask install r
 brew cask install rstudio
+```
+
+* Install R packages
+```
+R -e 'install.packages(c("tidyverse", "data.table", "BiocManager", "xlsx"))'
 ```
 
 * Install Firefox
