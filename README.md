@@ -86,3 +86,8 @@ brew cask install rstudio
 ```
 brew cask install firefox
 ```
+
+* Install cromwell (mainly for WOMtool)
+```
+brew install cromwell
+```
