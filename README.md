@@ -24,9 +24,10 @@ conda config --add channels bioconda
 conda config --add channels conda-forge
 ```
 
-* Update conda
+* Install pandas and numpy to conda base env
 ```
 conda update -n base conda
+conda install pandas numpy
 ```
 
 * Install Visual Studio Code (https://code.visualstudio.com/Download)
