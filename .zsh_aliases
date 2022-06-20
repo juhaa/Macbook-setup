@@ -1,0 +1,99 @@
+# general aliases
+alias l="ls -lhtr"
+alias p="pwd"
+alias cl="cd ..; ls -lhtr"
+alias gitget="git log --format="%H" -n 1 | head -c 7"
+
+alias irssi="ssh -t plantmonster 'screen -rD irssi'"
+#alias womtool="java -jar ~/womtool-54.jar"
+alias sshvm="gcloud compute ssh --zone 'europe-west1-b' 'juha' --project 'phewas-development'"
+#alias cromwell-test-juha="gcloud compute ssh cromwell-test-juha --zone europe-west1-b --project 'phewas-development' -- -N -p 22 -D localhost:5005"
+#alias cromwell-dev-1="gcloud compute ssh dev-cromwell-1 --zone europe-west1-b --project 'phewas-development' -- -N -p 22 -D localhost:5005"
+#alias cromwell1="gcloud compute ssh cromwell-fg-1 --zone europe-west1-b --project 'finngen-refinery-dev' -- -N -p 22 -D localhost:5005"
+alias cromwell2="gcloud compute ssh cromwell-fg-2 --zone europe-west1-b --project 'finngen-refinery-dev' -- -N -p 22 -D localhost:5005"
+alias cromwell-covid="gcloud compute ssh cromwell --zone us-east1-d --project 'covid-19-hg' -- -N -p 22 -D localhost:5005"
+alias sshref="gcloud compute ssh --zone 'europe-west1-b' 'juham-vm' --project 'finngen-refinery-dev'"
+alias scidb-test="gcloud compute ssh --zone 'europe-west1-b' 'scidb-test' --project 'finngen-refinery-dev'"
+alias covid-vm="gcloud compute ssh --zone 'us-east1-d' 'vm' --project 'covid-19-hg'"
+alias ci="python3 /Users/jmehton/CromwellInteract/cromwell_interact.py"
+
+# cromwell instances
+cromwell1 () {
+	# Check gcloud project, change if needed
+	[ $(gcloud config get-value project) != "finngen-refinery-dev" ] && gcloud config set project finngen-refinery-dev
+	# Check if port open already, kill if needed
+	lsof -ti:5000 | xargs kill -9
+	# Connect
+	ci connect cromwell-fg-1
+}
+
+cromwell-phewas () {
+        # Check gcloud project, change if needed
+        [ $(gcloud config get-value project) != "phewas-development" ] && gcloud config set project phewas-development 
+        # Check if port open already, kill if needed
+        lsof -ti:5000 | xargs kill -9
+        # Connect
+        ci connect dev-cromwell-1
+ }
+
+cromwell-panukbb-us () {
+        # Check gcloud project, change if needed
+        [ $(gcloud config get-value project) != "phewas-development" ] && gcloud config set project phewas-development
+        # Check if port open already, kill if needed
+        lsof -ti:5000 | xargs kill -9
+        # Connect
+        ci connect phewas-cromwell-us
+}
+
+googledown () {
+	if [ $# != 2 ]; then
+        	echo "Usage: googledown ID save_name"
+	else
+		confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id='$1 -O- | sed -En 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')
+		echo $confirm
+		wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$confirm&id=$1" -O $2 && rm -rf /tmp/cookies.txt
+	fi
+}
+
+# gsutil aliases
+alias gsl="gsutil ls -lh"
+#alias gscp="gsutil -m cp"
+alias gsrm="gsutil -m rm"
+
+gscp () {
+    #if [[ "$2" != "" && ! "$2" =~ "gs://.*"  && ! -d "$2" ]]
+    #then
+    #    mkdir -p "$2"
+    #fi
+    gsutil -m cp "$@"
+}
+
+gscat () {
+    ext="${1##*.}"
+    if [[ "$ext" == "gz" || "$ext" == "bgz" ]]
+    then
+        gsutil cat $1 | zcat
+    else
+        gsutil cat $1
+    fi
+}
+
+gstail () {
+    gscat $1 | tail $2 $3
+}
+
+gshead () {
+    gscat $1 | head $2 $3
+}
+
+gsless () {
+    gscat $1 | less -S
+}
+
+gswc () {
+    gscat $1 | wc -l
+}
+
+gcstoken () {
+    export GCS_OAUTH_TOKEN=`gcloud auth print-access-token`
+}
