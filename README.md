@@ -90,7 +90,7 @@ brew cask install rstudio
 
 * Install R packages
 ```
-R -e 'install.packages(c("tidyverse", "data.table", "BiocManager", "xlsx"))'
+R -e 'install.packages(c("tidyverse", "data.table", "BiocManager", "xlsx", "rjson"))'
 ```
 
 * Install Firefox
