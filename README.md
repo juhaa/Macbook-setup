@@ -1,6 +1,8 @@
 # Macbook-setup
 To Do -list for a new Macbook
 
+## Essentials
+
 * Install Xcode: https://developer.apple.com/xcode/
 
 * Install Xcode command line tools
@@ -8,73 +10,37 @@ To Do -list for a new Macbook
 xcode-select --install
 ```
 
-* Install Homebrew
+* Install Homebrew and essentials
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+brew tap homebrew/cask-fonts
+brew update
+brew install svn
+brew install --cask miniconda visual-studio-code iterm2 font-source-code-pro r rstudio firefox google-chrome google-cloud-sdk slack freedome whatsapp telegram-desktop
+brew install git vim cromwell
 ```
 
-* Install Miniconda (https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh)
-```
-brew cask install miniconda
-```
-
-* Add channels for conda
+* conda config
 ```
 conda config --add channels bioconda
 conda config --add channels conda-forge
-```
-
-* Install pandas and numpy to conda base env
-```
 conda update -n base conda
-conda install pandas numpy
-```
-
-* Install Visual Studio Code (https://code.visualstudio.com/Download)
-```
-brew cask install visual-studio-code
-```
-
-* Install Vim
-```
-brew install vim
-```
-
-* Install git
-```
-brew install git
+conda install pandas numpy pyperclip
 ```
 
 * Git config
-```
+```sh
 git config --global user.name juhaa
 git config --global user.email juha.mehtonen@outlook.com
 git config --global core.editor vi
 git config --global credential.helper osxkeychain
-```
-
-* Global .gitignore
-```
 curl https://raw.githubusercontent.com/github/gitignore/master/Global/macOS.gitignore -o ~/.gitignore
-
 git config --global core.excludesfile ~/.gitignore
 ```
 
-* Set up ssh keys (Github, servers, etc.)
+* Init Gcloud
 ```
-ssh-keygen
-```
-
-* Install Docker (https://docs.docker.com/docker-for-mac/install/)
-
-* Install iTerm2 (https://www.iterm2.com/downloads.html)
-```
-brew cask install iterm2
-```
-
-* Install font Source Code Pro
-```
-brew tap homebrew/cask-fonts && brew cask install font-source-code-pro
+gcloud init
 ```
 
 * Download color Gruvbox dark color theme for iTerm2
@@ -82,23 +48,16 @@ brew tap homebrew/cask-fonts && brew cask install font-source-code-pro
 git clone https://github.com/mbadolato/iTerm2-Color-Schemes.git
 ```
 
-* Install R and RStudio
-```
-brew cask install r
-brew cask install rstudio
-```
-
 * Install R packages
 ```
-R -e 'install.packages(c("tidyverse", "data.table", "BiocManager", "xlsx", "rjson"))'
+R -e 'install.packages(c("tidyverse", "data.table", "BiocManager", "xlsx", "rjson"), repos = "https://cran.rstudio.com/")'
 ```
 
-* Install Firefox
-```
-brew cask install firefox
-```
+## Optional
 
-* Install cromwell (mainly for WOMtool)
-```
-brew install cromwell
+* Install Docker
+```sh
+brew install docker docker-compose
+mkdir -p ~/.docker/cli-plugins
+ln -sfn /opt/homebrew/opt/docker-compose/bin/docker-compose ~/.docker/cli-plugins/docker-compose
 ```
