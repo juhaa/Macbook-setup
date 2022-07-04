@@ -57,7 +57,7 @@ R -e 'install.packages(c("tidyverse", "data.table", "BiocManager", "xlsx", "rjso
 ```sh
 echo '[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"' >> .bash_profile
 echo 'source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc"' >> .bash_profile
-echo 'source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc"' >> .bash_profile
+echo 'source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc"' >> .bash_profile
 ```
 
 ## Optional
