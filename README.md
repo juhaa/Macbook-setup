@@ -16,8 +16,8 @@ xcode-select --install
 brew tap homebrew/cask-fonts
 brew update
 brew install svn
-brew install --cask miniconda visual-studio-code iterm2 font-source-code-pro r rstudio firefox google-chrome google-cloud-sdk slack freedome whatsapp telegram-desktop bash-completion
-brew install git vim cromwell
+brew install --cask miniconda visual-studio-code iterm2 font-source-code-pro r rstudio firefox google-chrome google-cloud-sdk slack freedome whatsapp telegram-desktop
+brew install git vim cromwell bash-completion jq
 ```
 
 ### conda config
@@ -31,7 +31,7 @@ conda install pandas numpy pyperclip
 ### Git config
 ```sh
 git config --global user.name juhaa
-git config --global user.email juha.mehtonen@outlook.com
+git config --global user.email juhaa@users.noreply.github.com
 git config --global core.editor vi
 git config --global credential.helper osxkeychain
 curl https://raw.githubusercontent.com/github/gitignore/master/Global/macOS.gitignore -o ~/.gitignore
