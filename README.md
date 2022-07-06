@@ -17,7 +17,7 @@ brew tap homebrew/cask-fonts
 brew update
 brew install svn
 brew install --cask miniconda visual-studio-code iterm2 font-source-code-pro r rstudio firefox google-chrome google-cloud-sdk slack freedome whatsapp telegram-desktop
-brew install git vim cromwell bash-completion jq
+brew install git vim cromwell bash-completion jq npm
 ```
 
 ### conda config
