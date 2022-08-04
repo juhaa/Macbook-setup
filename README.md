@@ -20,6 +20,13 @@ brew install --cask miniconda visual-studio-code iterm2 font-source-code-pro r r
 brew install git vim cromwell bash-completion jq npm
 ```
 
+### Java config
+```sh
+# Check the correct openjdk path
+sudo ln -sfn /opt/homebrew/Cellar/openjdk/18.0.2/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
+export JAVA_HOME=/opt/homebrew/Cellar/openjdk/18.0.2/ # not sure if this is necessary...
+```
+
 ### conda config
 ```sh
 conda config --add channels bioconda
